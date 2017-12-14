@@ -55,6 +55,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * @author Arun Gupta
  */
+@SuppressWarnings("serial")
 @WebServlet(name = "TestJNDIServlet", urlPatterns = {"/TestJNDIServlet"})
 public class TestJNDIServlet extends HttpServlet {
 
@@ -81,9 +82,8 @@ public class TestJNDIServlet extends HttpServlet {
             out.println("<h1>Servlet TestJNDIServlet at " + request.getContextPath() + "</h1>");
             System.out.println("Getting ManagedExecutorService using JNDI lookup");
             try {
-                InitialContext ctx = new InitialContext();
-                
-                ManagedExecutorService executor = (ManagedExecutorService) ctx.lookup("java:comp/DefaultManagedExecutorService");
+                final InitialContext ctx = new InitialContext();               
+                final ManagedExecutorService executor = (ManagedExecutorService) ctx.lookup("java:comp/DefaultManagedExecutorService");
                 for (int i = 0; i < 5; i++) {
                     out.format("submitting runnable(%d)<br>", i);
                     executor.submit(new MyRunnableTask(i));

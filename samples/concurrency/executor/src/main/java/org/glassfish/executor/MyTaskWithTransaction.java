@@ -41,6 +41,7 @@ package org.glassfish.executor;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.transaction.HeuristicMixedException;
@@ -72,14 +73,12 @@ public class MyTaskWithTransaction implements Runnable {
         this.id = id;
     }
 
-//    @Resource UserTransaction tx;
-
     @Override
     public void run() {
         
         try {
-            InitialContext context = new InitialContext();
-            UserTransaction tx = (UserTransaction)context.lookup("java:comp/UserTransaction");
+            final InitialContext context = new InitialContext();
+            final UserTransaction tx = (UserTransaction)context.lookup("java:comp/UserTransaction");
             
             try {
                 System.out.format("%d (transaction): tx.start", id);
@@ -94,5 +93,4 @@ public class MyTaskWithTransaction implements Runnable {
             Logger.getLogger(MyTaskWithTransaction.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
 }
