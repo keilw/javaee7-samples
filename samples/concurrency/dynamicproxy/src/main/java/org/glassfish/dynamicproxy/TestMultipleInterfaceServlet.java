@@ -86,7 +86,6 @@ public class TestMultipleInterfaceServlet extends HttpServlet {
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet TestServlet at " + request.getContextPath() + "</h1>");
-
             out.println("Creating contextual proxy<br>");
             final Object proxy = service.createContextualProxy(new MyRunnableWork(), Runnable.class, MyWork.class);
             out.println("Calling MyWork interface<br>");
