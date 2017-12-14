@@ -56,6 +56,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * @author Arun Gupta
  */
+@SuppressWarnings("serial")
 @WebServlet(urlPatterns = {"/TestServlet"})
 public class TestServlet extends HttpServlet {
 
@@ -76,7 +77,8 @@ public class TestServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    @SuppressWarnings("unused")
+	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -92,7 +94,7 @@ public class TestServlet extends HttpServlet {
             out.println("Creating Java SE style ExecutorService<br>");
             ExecutorService executor = Executors.newFixedThreadPool(10, factory);
             out.println("Submitting the task<br>");
-            Future f = executor.submit(proxy);
+            Future<?> f = executor.submit(proxy);
             out.println("done<br><br>");
             out.println("Check server.log for output from the task.");
             out.println("</body>");
