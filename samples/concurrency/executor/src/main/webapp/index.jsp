@@ -54,9 +54,11 @@
         
         Get ManagedExecutor using <a href="${pageContext.request.contextPath}/TestResourceServlet">(@Resource)</a> (in Servlet)<br/>
         Get ManagedExecutor using <a href="${pageContext.request.contextPath}/TestJNDIServlet">(JNDI Context)</a> (in Servlet)<br/>
+        <%--  
         Run <a href="${pageContext.request.contextPath}/TestEJBServlet">managed threads in EJB</a><br/>
         Submit tasks using <a href="${pageContext.request.contextPath}/TestInvokeAllServlet">invokeAll</a><br/>
         Submit tasks using <a href="${pageContext.request.contextPath}/TestInvokeAnyServlet">invokeAny</a><br/>
+        --%>
         Submit tasks <a href="${pageContext.request.contextPath}/TestListenerServlet">with ManagedTaskListener</a><br/>
         Run task <a href="${pageContext.request.contextPath}/TestTransactionServlet">with a UserTransaction</a><br/>
     </body>
