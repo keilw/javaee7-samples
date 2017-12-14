@@ -56,6 +56,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * @author Arun Gupta
  */
+@SuppressWarnings("serial")
 @WebServlet(urlPatterns = {"/TestMultipleInterfaceServlet"})
 public class TestMultipleInterfaceServlet extends HttpServlet {
 
@@ -65,7 +66,6 @@ public class TestMultipleInterfaceServlet extends HttpServlet {
     @Resource(name = "java:comp/DefaultContextService")
     ContextService service;
     
-
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -88,11 +88,11 @@ public class TestMultipleInterfaceServlet extends HttpServlet {
             out.println("<h1>Servlet TestServlet at " + request.getContextPath() + "</h1>");
 
             out.println("Creating contextual proxy<br>");
-            Object proxy = service.createContextualProxy(new MyRunnableWork(), Runnable.class, MyWork.class);
+            final Object proxy = service.createContextualProxy(new MyRunnableWork(), Runnable.class, MyWork.class);
             out.println("Calling MyWork interface<br>");
             ((MyWork)proxy).myWork();
             out.println("Creating Java SE style ExecutorService<br>");
-            ExecutorService executor = Executors.newFixedThreadPool(10, factory);
+            final ExecutorService executor = Executors.newFixedThreadPool(10, factory);
             out.println("Submitting the task<br>");
             Future f = executor.submit((Runnable)proxy);
             out.println("done<br><br>");
