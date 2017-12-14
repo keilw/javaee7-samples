@@ -50,7 +50,7 @@ import javax.enterprise.concurrent.ManagedTaskListener;
  */
 public class MyTaskWithListener implements Runnable, ManagedTask, ManagedTaskListener {
 
-    private int id;
+	private int id;
 
     public MyTaskWithListener() {
     }
