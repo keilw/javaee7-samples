@@ -42,7 +42,7 @@ package org.glassfish.dynamicproxy;
 /**
  * @author Arun Gupta
  */
-public class MyRunnableWork implements Runnable , MyWork {
+public class MyRunnableWork implements Runnable, MyWork {
 
     @Override
     public void run() {
@@ -51,6 +51,6 @@ public class MyRunnableWork implements Runnable , MyWork {
 
     @Override
     public void myWork() {
-        System.out.println("MyRunnablework.myWork");
+        System.out.println("MyRunnableWork.myWork");
     }
 }

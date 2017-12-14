@@ -52,6 +52,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Arun
  */
+@SuppressWarnings("serial")
 @WebServlet(urlPatterns = {"/TestEJBServlet"})
 public class TestEJBServlet extends HttpServlet {
 
